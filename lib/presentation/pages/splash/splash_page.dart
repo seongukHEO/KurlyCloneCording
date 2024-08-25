@@ -1,28 +1,37 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../routes/route_path.dart';
 
-class SplashPage extends StatelessWidget {
+//Todo 로그인 Bloc
+class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
+
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //이걸 bloc로 관리?
+    Timer(Duration(seconds: 2), () => context.go(RoutePath.home));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("스플래시"),
-      ),
+      //Todo 하드코딩된 값 변경할 것
+      backgroundColor: Color(0xFF5F0080),
       body: Center(
-        child: Column(
-          children: [
-            Text("splashScreen"),
-            ElevatedButton(
-                onPressed: () => context.go(RoutePath.home),
-                child: Text("화면 넘기기")
-            ),
-          ],
-        ),
+        child: SvgPicture.asset('assets/svg/main_logo.svg'),
       ),
     );
   }
