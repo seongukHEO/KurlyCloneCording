@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage> {
     // TODO: implement initState
     super.initState();
     //이걸 bloc로 관리?
-    Timer(Duration(seconds: 2), () => context.go(RoutePath.home));
+    Timer(Duration(seconds: 2), () => context.go(RoutePath.main));
   }
 
   @override
