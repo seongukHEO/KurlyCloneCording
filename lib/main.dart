@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'core/theme/theme_data.dart';
 import 'presentation/pages/home/home_page.dart';
 import 'presentation/pages/splash/splash_page.dart';
 import 'presentation/routes/routes.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: router,
+      theme: CustomThemeData.themeData,
     );
   }
 }
