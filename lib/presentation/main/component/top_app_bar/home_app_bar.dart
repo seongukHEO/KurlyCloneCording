@@ -7,6 +7,7 @@ import '../../../../core/theme/constant/app_icons.dart';
 import '../../../../core/theme/custom/custom_font_weight.dart';
 import '../../../../core/theme/custom/custom_theme.dart';
 import '../../cubit/mall_type_cubit.dart';
+import 'widgets/svg_icon_button.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -24,17 +25,7 @@ class HomeAppBar extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
             child: AppBar(
               backgroundColor: Colors.transparent,
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(
-                  AppIcons.mainLogo,
-                  colorFilter: ColorFilter.mode(
-                      state.isMarket
-                          ? Theme.of(context).colorScheme.onPrimary
-                          : Theme.of(context).colorScheme.primary,
-                      BlendMode.srcIn),
-                ),
-              ),
+              leading: SvgIconButton(icon: AppIcons.mainLogo, padding: 8.0, color: state.Theme.logoColor,),
               leadingWidth: 86,
               centerTitle: true,
               title: AnimatedContainer(
@@ -50,12 +41,8 @@ class HomeAppBar extends StatelessWidget {
                         context.read<MallTypeCubit>().changeIndex(index),
                     //Todo 나중에 별물결 할 때 이거 꼭 참고하자
                     splashBorderRadius: BorderRadius.circular(30),
-                    labelColor: state.isMarket
-                        ? Theme.of(context).colorScheme.primary
-                        : Theme.of(context).colorScheme.background,
-                    unselectedLabelColor: state.isMarket
-                        ? Theme.of(context).colorScheme.background
-                        : Theme.of(context).colorScheme.contentPrimary,
+                    labelColor: state.Theme.labelColor,
+                    unselectedLabelColor: state.Theme.unselectedLabelColor,
                     labelStyle: Theme.of(context).textTheme.labelLarge.bold,
                     labelPadding: EdgeInsets.symmetric(horizontal: 12),
                     dividerColor: Colors.transparent,
@@ -66,37 +53,15 @@ class HomeAppBar extends StatelessWidget {
                             )),
                     indicator: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(30)),
-                        color: state.isMarket
-                            ? Theme.of(context).colorScheme.background
-                            : Theme.of(context).colorScheme.primary),
+                        color: state.Theme.indicatorColor),
                     isScrollable: true,
                     indicatorSize: TabBarIndicatorSize.tab,
                   ),
                 ),
               ),
               actions: [
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: SvgPicture.asset(
-                    AppIcons.location,
-                    colorFilter: ColorFilter.mode(
-                        state.isMarket
-                            ? Theme.of(context).colorScheme.background
-                            : Theme.of(context).colorScheme.contentPrimary,
-                        BlendMode.srcIn),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: SvgPicture.asset(
-                    AppIcons.cart,
-                    colorFilter: ColorFilter.mode(
-                        state.isMarket
-                            ? Theme.of(context).colorScheme.background
-                            : Theme.of(context).colorScheme.contentPrimary,
-                        BlendMode.srcIn),
-                  ),
-                ),
+                SvgIconButton(icon: AppIcons.location, color: state.Theme.iconColor),
+                SvgIconButton(icon: AppIcons.cart, color: state.Theme.iconColor)
               ],
             ),
           ),
