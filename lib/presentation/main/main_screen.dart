@@ -10,13 +10,18 @@ import '../pages/search/search_page.dart';
 import '../pages/user/user_page.dart';
 import 'component/top_app_bar/top_app_bar.dart';
 import 'cubit/bottom_navi_cubit.dart';
+import 'cubit/mall_type_cubit.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (_) => BottomNaviCubit(), child: MainScreenView(),);
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (_) => BottomNaviCubit()),
+      BlocProvider(create: (_) => MallTypeCubit())
+    ],
+        child: MainScreenView());
   }
 }
 

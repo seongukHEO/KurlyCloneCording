@@ -18,7 +18,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget{
         case BottomNavi.search:
         case BottomNavi.category:
         case BottomNavi.user:
-          return DefaultAppBar();
+          return DefaultAppBar(bottomNavi: state,);
       }
     });
   }
