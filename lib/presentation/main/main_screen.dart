@@ -72,33 +72,18 @@ class MainScreenView extends StatelessWidget {
       bottomNavigationBar: BlocBuilder<BottomNaviCubit, BottomNavi>(
         builder: (_, state) {
           return BottomNavigationBar(
+            items: List.generate(BottomNavi.values.length, (index) =>
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(BottomNavi.values[index].icon),
+                    label: BottomNavi.values[index].toName,
+                    activeIcon: SvgPicture.asset(BottomNavi.values[index].activeIcon)
+                ),
+            ),
             currentIndex: state.index,
             onTap: (index) => context.read<BottomNaviCubit>().changeIndex(index),
             showUnselectedLabels: false,
             showSelectedLabels: false,
             type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                  icon: SvgPicture.asset(AppIcons.navHome),
-                  label: 'home',
-                activeIcon: SvgPicture.asset(AppIcons.navHomeOn)
-              ),
-              BottomNavigationBarItem(
-                  icon: SvgPicture.asset(AppIcons.navCategory),
-                  label: 'category',
-                  activeIcon: SvgPicture.asset(AppIcons.navCategoryOn)
-              ),
-              BottomNavigationBarItem(
-                  icon: SvgPicture.asset(AppIcons.navSearch),
-                  label: 'search',
-                  activeIcon: SvgPicture.asset(AppIcons.navSearchOn)
-              ),
-              BottomNavigationBarItem(
-                  icon: SvgPicture.asset(AppIcons.navUser),
-                  label: 'user',
-                  activeIcon: SvgPicture.asset(AppIcons.navUserOn)
-              ),
-            ],
           );
         }
       ),
