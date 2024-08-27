@@ -8,6 +8,7 @@ import '../pages/category/category_page.dart';
 import '../pages/home/home_page.dart';
 import '../pages/search/search_page.dart';
 import '../pages/user/user_page.dart';
+import 'component/top_app_bar/top_app_bar.dart';
 import 'cubit/bottom_navi_cubit.dart';
 
 class MainScreen extends StatelessWidget {
@@ -26,37 +27,7 @@ class MainScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(44),
-        child: Container(
-          color: Theme.of(context).primaryColor,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
-            child: AppBar(
-              backgroundColor: Colors.transparent,
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(AppIcons.mainLogo),
-              ),
-              leadingWidth: 86,
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: SvgPicture.asset(
-                    AppIcons.location,
-                    colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.background, BlendMode.srcIn),),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: SvgPicture.asset(
-                    AppIcons.cart,
-                    colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.background, BlendMode.srcIn),),
-                ),
-              ],
-            ),
-          ),
-        )
-      ),
+      appBar: TopAppBar(),
       body: BlocBuilder<BottomNaviCubit, BottomNavi>(builder: (_, state){
         switch(state){
           case BottomNavi.home:
