@@ -39,15 +39,16 @@ dependencies:
   go_router: ^14.2.7
   flutter_svg: ^2.0.9
   cubit_form: ^2.0.5
-  freezed_annotation: ^2.4.4
-  json_annotation: ^4.9.0
+  freezed_annotation: ^2.3.0 # 확인 필요
+  json_annotation: ^4.8.0    # 확인 필요
   dio: ^5.3.0
   retrofit: ^4.0.1
 
 dev_dependencies:
-  freezed: ^2.4.4
-  build_runner: ^2.4.5
-  json_serializable: ^6.8.0
+  analyzer: ^5.13.0
+  build_runner: ^2.4.0       # 확인 필요
+  freezed: ^2.3.0            # 확인 필요
+  json_serializable: ^6.8.0  # 확인 필요
   flutter_test:
     sdk: flutter
   retrofit_generator: ^8.2.0
